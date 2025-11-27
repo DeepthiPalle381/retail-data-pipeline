@@ -32,6 +32,7 @@ retail-data-pipeline/
 ├── docs/                    # architecture diagrams, notes
 └── README.md
 
+---
 
 ## 🧱 Pipeline Stages
 
@@ -106,6 +107,8 @@ Run tests:
 ```bash
 pytest
 
+---
+
 ### 5️⃣ SQL Analytics
 
 Folder: `sql/`
@@ -136,7 +139,6 @@ Ingest → Transform → Warehouse
 Uses `PythonOperator` to call pipeline scripts.
 
 ---
-
 
 ## 🛠 Tech Stack
 
