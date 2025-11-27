@@ -105,6 +105,7 @@ Run tests:
 
 ```bash
 pytest
+```
 
 ---
 
