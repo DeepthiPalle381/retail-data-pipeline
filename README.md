@@ -32,7 +32,9 @@ retail-data-pipeline/
 ├── docs/                    # architecture diagrams, notes
 └── README.md
 
+
 ## 🧱 Pipeline Stages
+
 
 ### 1️⃣ Ingestion
 
@@ -51,6 +53,7 @@ Reads 6 raw CSV files from `data/raw`:
 - Saves cleaned versions to `data/clean/` (prefixed with `clean_`)
 
 ---
+
 
 ### 2️⃣ Transformation
 
@@ -72,6 +75,7 @@ Additional processing:
 
 ---
 
+
 ### 3️⃣ Data Warehouse
 
 **Location:** `data/warehouse/`
@@ -83,6 +87,7 @@ Contains:
 - fact_sales.csv  
 
 ---
+
 
 ### 4️⃣ Data Quality Testing
 
@@ -105,6 +110,7 @@ Run tests:
 ```bash
 pytest
 
+
 ### 5️⃣ SQL Analytics
 
 Folder: `sql/`
@@ -123,6 +129,7 @@ Queries cover:
 - Order status distribution
 
 ---
+
 
 ### 6️⃣ Orchestration with Airflow
 
