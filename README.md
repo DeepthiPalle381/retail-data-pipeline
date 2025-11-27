@@ -1,26 +1,154 @@
 # Retail Data Pipeline (E-Commerce Dataset)
 
-This project builds an end-to-end data engineering pipeline using a public e-commerce dataset containing users, products, orders, order items, reviews, and event logs.
+*A complete end-to-end data engineering portfolio project.*
 
-## Goals
-- Ingest raw CSV files
-- Clean and transform data into fact/dimension tables
-- Build a mini data warehouse (star schema)
-- Prepare datasets for analytics and business insights
+This project demonstrates a real-world data pipeline built on a synthetic e-commerce dataset containing users, products, orders, order_items, reviews, and event logs. It covers ingestion, cleaning, transformation, warehouse modeling, data quality testing, analytics, and orchestration with Airflow.
 
-## Tech Stack
+---
+
+## 🚀 Architecture
+
+![Architecture Diagram](docs/architecture.png)
+
+---
+
+## 📂 Project Structure
+
+```text
+retail-data-pipeline/
+├── data/
+│   ├── raw/                 # original CSV files
+│   ├── clean/               # cleaned ingestion outputs
+│   └── warehouse/           # dim_* and fact_* tables
+│
+├── src/
+│   ├── ingest/              # ingestion code
+│   ├── transform/           # transformation code
+│   └── load/                # (optional) loading scripts
+│
+├── dags/                    # Airflow DAGs
+├── sql/                     # SQL schema + business queries
+├── tests/                   # pytest data quality tests
+├── docs/                    # architecture diagrams, notes
+└── README.md
+
+## 🧱 Pipeline Stages
+
+### 1️⃣ Ingestion
+
+**File:** `src/ingest/ingest_data.py`
+
+Reads 6 raw CSV files from `data/raw`:
+
+- users.csv
+- products.csv
+- orders.csv
+- order_items.csv
+- reviews.csv
+- events.csv
+
+- Removes completely empty rows  
+- Saves cleaned versions to `data/clean/` (prefixed with `clean_`)
+
+---
+
+### 2️⃣ Transformation
+
+**File:** `src/transform/transform_data.py`
+
+Loads cleaned data from `data/clean/`
+
+Builds warehouse tables:
+
+- dim_users  
+- dim_products  
+- fact_sales (joins orders + order_items)
+
+Additional processing:
+
+- Normalizes `order_status` values  
+- Computes `line_amount`  
+- Saves warehouse tables to `data/warehouse/`
+
+---
+
+### 3️⃣ Data Warehouse
+
+**Location:** `data/warehouse/`
+
+Contains:
+
+- dim_users.csv  
+- dim_products.csv  
+- fact_sales.csv  
+
+---
+
+### 4️⃣ Data Quality Testing
+
+**Files:**
+
+- `tests/test_transformations.py`  
+- `tests/test_data_quality.py`
+
+Tests include:
+
+- No null `user_id` or `product_id`  
+- No negative or zero quantities  
+- Correct `line_amount` calculations  
+- Valid gender values  
+- Non-negative product prices  
+- Only allowed `order_status` values  
+
+Run tests:
+
+```bash
+pytest
+
+### 5️⃣ SQL Analytics
+
+Folder: `sql/`
+
+Includes:
+
+- `create_tables.sql` – warehouse schema documentation
+- `business_metrics.sql` – example business queries
+
+Queries cover:
+
+- Revenue by category
+- Top-selling products
+- Daily revenue trends
+- Customer lifetime value
+- Order status distribution
+
+---
+
+### 6️⃣ Orchestration with Airflow
+
+File: `dags/retail_pipeline_dag.py`
+
+A daily Airflow DAG that runs:
+
+Ingest → Transform → Warehouse
+
+```text
+Ingest → Transform → Warehouse
+
+
+Uses `PythonOperator` to call pipeline scripts.
+
+---
+
+## 🛠 Tech Stack
+
 - Python (Pandas)
 - SQL
-- Airflow (later)
-- PostgreSQL (optional, later)
+- Pytest
+- Apache Airflow (DAG authoring)
+- Git & GitHub
+- VS Code
+- Draw.io (architecture diagram)
 
-## Dataset
-Place these files in `/data/raw`:
 
-- users.csv  
-- products.csv  
-- orders.csv  
-- order_items.csv  
-- reviews.csv  
-- events.csv  
 
