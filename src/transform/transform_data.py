@@ -30,6 +30,15 @@ def create_fact_sales(orders, order_items):
         how="left"
     )
 
+    # Normalize order_status values: strip spaces + Title case
+    if "order_status" in fact.columns:
+        fact["order_status"] = (
+            fact["order_status"]
+            .astype(str)
+            .str.strip()
+            .str.title()   # e.g. 'completed' -> 'Completed'
+        )
+
     # Create line_amount column
     if "quantity" in fact.columns and "item_price" in fact.columns:
         fact["line_amount"] = fact["quantity"] * fact["item_price"]
