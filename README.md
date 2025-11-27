@@ -31,8 +31,7 @@ retail-data-pipeline/
 ├── tests/                   # pytest data quality tests
 ├── docs/                    # architecture diagrams, notes
 └── README.md
-
----
+```
 
 ## 🧱 Pipeline Stages
 
