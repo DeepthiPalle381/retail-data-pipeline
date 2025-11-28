@@ -149,11 +149,10 @@ Uses `PythonOperator` to call pipeline scripts.
 - Git & GitHub
 - VS Code
 - Powerpoint (architecture diagram)
-```
 
-##▶️ How to Run This Project Locally
+## ▶️ How to Run This Project Locally
 
-###1. Clone repository
+### 1. Clone repository
 
 ```bash
 git clone https://github.com/DeepthiPalle381/retail-data-pipeline.git
@@ -161,7 +160,7 @@ cd retail-data-pipeline
 
 ```
 
-###2. Create virtual environment
+### 2. Create virtual environment
 
 ```bash
 python -m venv .venv
@@ -170,21 +169,21 @@ pip install -r requirements.txt
 
 ```
 
-###3. Run ingestion
+### 3. Run ingestion
 
 ```bash
 python src/ingest/ingest_data.py
 
 ```
 
-###4. Run transformation
+### 4. Run transformation
 
 ```bash
 python src/transform/transform_data.py
 
 ```
 
-###5. Run tests
+### 5. Run tests
 
 ```bash
 pytest
