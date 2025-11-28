@@ -150,7 +150,7 @@ Uses `PythonOperator` to call pipeline scripts.
 - VS Code
 - Powerpoint (architecture diagram)
 
-```
+---
 
 ##▶️ How to Run This Project Locally
 
