@@ -148,7 +148,45 @@ Uses `PythonOperator` to call pipeline scripts.
 - Apache Airflow (DAG authoring)
 - Git & GitHub
 - VS Code
-- Draw.io (architecture diagram)
+- Powerpoint (architecture diagram)
 
+
+##▶️ How to Run This Project Locally
+
+###1. Clone repository
+
+```bash
+git clone https://github.com/DeepthiPalle381/retail-data-pipeline.git
+cd retail-data-pipeline
+
+```
+
+###2. Create virtual environment
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+```
+
+###3. Run ingestion
+
+```bash
+python src/ingest/ingest_data.py
+
+```
+
+###4. Run transformation
+
+```bash
+python src/transform/transform_data.py
+
+```
+
+###5. Run tests
+
+```bash
+pytest
 
 
